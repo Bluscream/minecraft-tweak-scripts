@@ -165,11 +165,9 @@ def new_code():
         ),
         ('pop',)  # Remove the return value from drawString
     ])
-    
-    for ins in old_instructions[:-1]:  # Old code (except for last return)
-        yield ins
-    for ins in new_instructions:  # New code
-        yield ins
+
+    yield from old_instructions[:-1]
+    yield from new_instructions
     yield old_instructions[-1]  # Final return
 
 for ins in new_code():
